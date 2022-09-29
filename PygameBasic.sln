@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PygameBasic", "PygameBasic.pyproj", "{848B47B9-C024-43F6-9869-D0F1E6145224}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{848B47B9-C024-43F6-9869-D0F1E6145224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{848B47B9-C024-43F6-9869-D0F1E6145224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A29DCC66-A7C5-4783-9F8E-B8F8B7D6DECC}
+	EndGlobalSection
+EndGlobal
