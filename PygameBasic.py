@@ -59,6 +59,8 @@ class Ball(pygame.sprite.Sprite):
         self.rect.center = centre
         self.velocity = velocity
         self.on_ground = False
+
+
     def update(self, screen):
         self.rect.x = self.rect.x + self.velocity[0]
         self.rect.y = self.rect.y + self.velocity[1]
@@ -69,25 +71,32 @@ class Ball(pygame.sprite.Sprite):
             current_y_vel = self.velocity[1]
             y_vel = current_y_vel + ACCELERATION_DUE_TO_GRAVITY
             self.velocity = (current_x_vel, y_vel)
-
-        # if bottom of screen, bounce
-        # TODO fix temp hack
-        if self.rect.y > WINDOW_HEIGHT - 50:
-            self.bounce()
+            # if bottom of screen, bounce
+            if self.rect.bottomleft[1] >= screen.get_height():
+                self.bounce()
 
     def bounce(self):
         current_x_vel = self.velocity[0]
-        current_y_vel = - self.bounciness * self.velocity[1]
+        current_y_vel = self.velocity[1]
+        print("Y vel before bounce", current_y_vel)
+        if current_y_vel > 0.1: # if falling...
+            current_y_vel = -1 * current_y_vel * self.bounciness #...then bounce
+        else:
+            current_y_vel = 0 # or settle at rest
+            self.on_ground = True
+            
         self.velocity = (current_x_vel, current_y_vel)
+        print("Y vel after bounce", current_y_vel)
+        
 
 
 
 
 balls = pygame.sprite.Group()
 
-ball = Ball(balls, "ball.png", (50,50), 0.5, (100,100))
+ball1 = Ball(balls, "ball.png", (50,50), 0.8, (100,100))
 
-balls.add(ball)
+balls.add(ball1)
 
 
 
@@ -129,13 +138,15 @@ while running:
 
     
     # update stuff
-    ball.update(screen)
+    for ball in balls:
+        ball.update(screen)
+    
 
     # drawing stuff...
     # background
     screen.fill(BLUE)
 
-    #draw rect on the screen in specified colour
+    #draw rect on the screen in specified colour (this is grass)
     pygame.draw.rect(screen, GREEN, foreground_rect)
     
     #Use pygame.Surface.blit to blit images onto the screen: https://www.pygame.org/docs/ref/surface.html#pygame.Surface.blit
@@ -145,6 +156,8 @@ while running:
         show_message(screen, DEFAULT_FONT, "Let's go")
 
     balls.draw(screen)
+
+
     # keep track of time
     frame_number += 1
     pygame.display.flip()  # updates display
