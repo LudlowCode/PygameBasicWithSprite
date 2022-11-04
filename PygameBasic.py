@@ -106,14 +106,15 @@ balls.add(ball1)
 
 # Write some functions you can call
 
-def show_message(screen, font, message):
+def show_message(screen, font: pygame.font.Font, message:str):
+    print(type(screen))
     label = font.render(message, 1, (255,255,0))
     screen.blit(label, (25, 25))
     
 
 
 
-#--------------------------MAIN_GAME_LOOP---------------
+#--------------------------MAIN_GAME_LOOP--------------------
 
 #Often handy to keep tabls of frame number
 frame_number = 0
@@ -135,6 +136,9 @@ while running:
                 old_vel_x = ball.velocity[0]
                 old_vel_y = ball.velocity[1]
                 ball.velocity = (old_vel_x -MAX_SPEED, old_vel_y)
+            if event.key == pygame.K_p:
+                while True:
+                    print("Paused!")
 
     
     # update stuff
