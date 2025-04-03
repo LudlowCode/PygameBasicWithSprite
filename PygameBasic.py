@@ -135,7 +135,7 @@ while running:
                 old_vel_x = ball.velocity[0]
                 old_vel_y = ball.velocity[1]
                 ball.velocity = (old_vel_x -MAX_SPEED, old_vel_y)
-
+            # maybe code elif for right?
     
     # update stuff
     for ball in balls:
